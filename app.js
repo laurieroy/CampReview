@@ -14,7 +14,7 @@ app.set("view engine", "ejs");
 app.get("/", function(req, res){
    res.render("landing"); 
 });
-<!-- temp until have DB -->
+// temp until have DB ---------
 var campgrounds = [
    {name: "Salmon Creek", image: "https://pixabay.com/get/e83db50a2ff5083ed1584d05fb1d4e97e07ee3d21cac104496f2c971a1ecb2b8_340.jpg"},
    {name: "Island Lake", image: "https://pixabay.com/get/e83db50a21f4073ed1584d05fb1d4e97e07ee3d21cac104496f2c971a1ecb2b8_340.jpg"},

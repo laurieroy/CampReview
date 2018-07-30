@@ -1,5 +1,6 @@
 #YelpCamp
-A review site for campgrounds code-along, Colt Steele webdevbootcamp
+A review site for campgrounds using RESTful routing created in node.js
+code-along, Colt Steele webdevbootcamp
 
 ##Initial Setup
 *Landing Page
@@ -11,5 +12,16 @@ Each Campground has:
     * Image
     
 #Layout and Basic Styling
-* header and footer partials
-* BS3 - will migrate to 4 at end
+* Created header and footer partials
+* Using BS3 - will migrate to 4 at end
+
+#Create a New Campground
+* Setup new campground POST route
+* Basic unstyled form
+* Setup route to show form
+
+# Add in styling 
+* Add better header/footer files
+* Make campground display in a grid
+* Add a navbar to templates
+* Style the New Campground Form
