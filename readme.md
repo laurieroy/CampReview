@@ -1,15 +1,12 @@
 #YelpCamp
 A review site for campgrounds using RESTful routing created in node.js
-code-along, Colt Steele webdevbootcamp
+code-along: Colt Steele webdevbootcamp
 
 ##Initial Setup
-*Landing Page
-*Campgrounds page that lists all campgrounds
+* Landing Page
+* Campgrounds page that lists all campgrounds
     -initially added as an array, will add in db later
-
-Each Campground has:
-    * Name
-    * Image
+    Each Campground has: --Name  --Image
     
 #Layout and Basic Styling
 * Created header and footer partials
@@ -25,3 +22,9 @@ Each Campground has:
 * Make campground display in a grid
 * Add a navbar to templates
 * Style the New Campground Form
+* 
+# Add MongooseDB
+* Setup campground model
+* Use model in routes
+##Refactor Mongoose Code
+ * Models dir / module.exports
