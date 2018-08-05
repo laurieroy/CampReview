@@ -8,7 +8,7 @@ var Campground  = require("./models/campground"),
     app         = express();    
 
 app.use(bodyParser.urlencoded({extended: true}));
-
+app.use(express.static(__dirname + "/public"));
 //runs seedDB, to del out exisiting db and seed with sample data
 seedDB();
 
