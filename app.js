@@ -1,21 +1,36 @@
-var Campground  = require("./models/campground"),
-    Comment     = require("./models/comment"),
-    bodyParser  = require("body-parser"),
-    mongoose    = require("mongoose"),
-    express     = require("express"),
-    request     = require("request"),
-    seedDB      = require("./seeds"),    
-    app         = express();    
+var passportLocalMongoose   = require("passport-local-mongoose"),
+    Campground              = require("./models/campground"),
+    Comment                 = require("./models/comment"),
+    LocalStrategy           = require("passport-local"),
+    User                    = require("./models/user"),
+    bodyParser              = require("body-parser"),
+    mongoose                = require("mongoose"),
+    passport                = require("passport"),
+    express                 = require("express"),
+    request                 = require("request"),
+    seedDB                  = require("./seeds"),    
+    app                     = express();    
+
+mongoose.connect("mongodb://localhost/yelp_camp");
+
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 //runs seedDB, to del out exisiting db and seed with sample data
 seedDB();
 
-mongoose.connect("mongodb://localhost/yelp_camp");
+//PASSPORT CONFIGUREATION
+app.use(require("express-session")({
+    secret:"This might be my last week of pay with NOAA!",
+    resave: false,
+    saveUnitialized: false
+}));
 
-
-
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 // SCHEMA SETUP, will be refactored
 
 
@@ -52,6 +67,10 @@ app.get("/", function(req, res){
 //   {name: "Patrick Creek", image: "https://farm6.staticflickr.com/5488/9884981675_e9573f7632.jpg"}
 // ];
    // add in db to the get function. do better error handling later
+   
+   //================================================
+//=== ROUTES ====
+//====================================
 //INDEX
 app.get("/campgrounds", function (req, res) {
         Campground.find({}, function(err, campgrounds){
@@ -125,6 +144,39 @@ app.post("/campgrounds/:id/comments", function(req,res) {
             });
         }
     });
+});
+// ====================
+// == AUTH ROUTES ==
+// ====================
+//show regiester form
+app.get("/register", function(req, res) {
+    res.render("register");
+});
+
+// handle sign up logic
+app.post("/register", function(req, res) {
+    var newUser = new User({username: req.body.username});
+    User.register(newUser, req.body.password, function(err, user){
+        if(err){
+            console.log(err);
+            return res.render("register");
+        }
+        passport.authenticate("local")(req, res, function(){
+            res.redirect("/campgrounds");
+        });
+    });
+});
+// show login form
+app.get("/login", function(req, res) {
+    res.render("login");
+});
+//handle login logic
+app.post("/login", passport.authenticate("local", 
+    {
+        successRedirect: "/campgrounds", 
+        failureRedirect: "/login"
+    }), function(req, res) {
+
 });
 
 app.listen(process.env.PORT, process.env.IP, function() {
