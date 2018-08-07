@@ -5,7 +5,7 @@
          <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">  
-        <title>YelpCamp</title
+        <title>YelpCamp</title>
 
         <!-- BS3 first -->
         <!-- Latest compiled and minified CSS -->
@@ -23,9 +23,13 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/">Login</a> </li>
-                    <li><a href="/">Sign Up</a> </li>
-                    <li><a href="/">Logout</a> </li>
+                    <% if (!currentUser){ %>
+                        <li><a href="/login">Login</a> </li> 
+                        <li><a href="/register">Sign Up</a> </li>
+                    <% } else { %>
+                        <li><a href="#">Signed In As <%= currentUser.username %></a> </li>
+                        <li><a href="/logout">Logout</a> </li>
+                    <% } %>
                 </ul>
             </div>
         </div>
