@@ -26,6 +26,8 @@ app.use(methodOverride("_method"));
 
 //runs seedDB, to del out exisiting db and seed with sample data
 // seedDB();
+//combine into 1 line
+app.locals.moment = require("moment");
 
 //PASSPORT CONFIGURATION
 app.use(require("express-session")({

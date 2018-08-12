@@ -9,7 +9,7 @@ router.get("/", function (req, res) {
             if(err){
                 console.log(err);
             } else {
-                res.render("campgrounds/index", {campgrounds: campgrounds}); //thisis the source, the 2nd arg in callback function
+                res.render("campgrounds/index", {campgrounds: campgrounds, page: 'campgrounds'});
             }
         });
 });
