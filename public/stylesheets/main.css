@@ -18,3 +18,9 @@
     width: 30%; 
     margin: 40px auto;
 }
+
+/* flex-box grid fix  flew-wrap?*/
+.flex-wrap {
+    display: flex;
+    flex-wrap: wrap;
+}

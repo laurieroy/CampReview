@@ -3,7 +3,7 @@
 
 <header class="jumbotron">
     <div class="container">
-        <h1>Welcome to my YelpCamp Page!</h1>
+        <h1><span class="glyphicon glyphicon-tent"></span>Welcome to YelpCamp!</h1>
         <p>View our selected campgrounds from all over the world!</p>
         <p>
             <a class="btn btn-primary" btn-lg href="/campgrounds/new">Add New Campground</a>
@@ -11,7 +11,7 @@
     </div>
 </header>
 
-<div class="row text-center" style="display:flex; flex-wrap: wrap;"> <!-- temp fix -->
+<div class="row text-center flex-wrap"> 
     <% campgrounds.forEach(function(campground){ %>
         <div class="col-md-3 col-sm-6">
             <div class="thumbnail">

@@ -1,17 +1,18 @@
 var Campground  = require("../models/campground"), 
     express     = require("express"),
-    router      = express.Router({mergeParams: true}), //test removing hte mergeparams
-    middleware   = require("../middleware");
+    middleware  = require("../middleware"),
+    router      = express.Router({mergeParams: true}); //test removing hte mergeparams
+
 
 //INDEX
 router.get("/", function (req, res) {
-        Campground.find({}, function(err, campgrounds){
-            if(err){
-                console.log(err);
-            } else {
-                res.render("campgrounds/index", {campgrounds: campgrounds, page: 'campgrounds'});
-            }
-        });
+    Campground.find({}, function(err, campgrounds){
+        if(err){
+            console.log(err);
+        } else {
+            res.render("campgrounds/index", {campgrounds: campgrounds, page: 'campgrounds'});
+        }
+    });
 });
 //  CREATE
 router.post("/", middleware.isLoggedIn, function(req, res){
@@ -22,8 +23,8 @@ router.post("/", middleware.isLoggedIn, function(req, res){
     var author = {
         id: req.user._id,
         username: req.user.username
-    }   ;
-    var newCampground = {name: name, price:price, image: image, description: description, author: author}; // matching previous format above
+    };   
+    var newCampground = {name: name, price:price, image: image, description: description, author: author}; 
 
     Campground.create(newCampground, function(err, newlyCreated){
         if(err){

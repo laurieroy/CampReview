@@ -1,9 +1,7 @@
-<% include ../partials/header %
-<div class="row">
-    <h1 style="text-align:center;">Create a New Campground</h1>
-    <div style="width: 30%; margin:40px auto;">
-        
-    
+<% include ../partials/header %>
+<div class="row text-center">
+    <h1>Create a New Campground</h1> <!-- removed style="text-align:center;" and added class text-center -->
+    <div>
         <form action="/campgrounds" method="POST">
             <div class="form-group">
                 <input class="form-control" type="text" name="name" placeholder="name"> 
