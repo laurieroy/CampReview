@@ -1,7 +1,7 @@
-var express     = require("express");
-var router      = express.Router({mergeParams: true}),
+var express     = require("express"),
     passport    = require("passport"),
-    User        = require("../models/user");
+    User        = require("../models/user"),
+    router      = express.Router({mergeParams: true});
 
 // ROOT ROUTE
 router.get("/", function(req, res){
@@ -16,6 +16,9 @@ router.get("/register", function(req, res) {
 // handle sign up logic
 router.post("/register", function(req, res) {
     var newUser = new User({username: req.body.username});
+    if(req.body.adminCode ==='secretcode123'){
+        newUser.isAdmin = true;
+    }
     User.register(newUser, req.body.password, function(err, user){
         if(err){
             req.flash("error", "error: " + err.message);
