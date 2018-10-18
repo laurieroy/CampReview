@@ -15,7 +15,14 @@ router.get("/register", function(req, res) {
 
 // handle sign up logic
 router.post("/register", function(req, res) {
-    var newUser = new User({username: req.body.username});
+    var newUser = new User(
+        {
+            username: req.body.username, 
+            firstName req.body.firstName, 
+            lastName: req.body.lastName,
+            email: req.body.email,
+            avatar: req.body.avatar
+        });
     if(req.body.adminCode ==='secretcode123'){
         newUser.isAdmin = true;
     }
@@ -47,5 +54,14 @@ router.get("/logout", function(req, res) {
     req.flash("success", "You are logged out!");
     res.redirect("/campgrounds");
 });
-
+//USER PROFILES
+router.get("/users/:id", function(req, res) {
+   User.findById(req.params.id, function(err, foundUser){
+       if(err){
+            req.flash("error", "Something went wrong");
+            res.redirect("/");
+       }
+       res.render("users/show", {user: foundUser});
+   }) ;
+});
 module.exports = router;
