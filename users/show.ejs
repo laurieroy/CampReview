@@ -4,7 +4,15 @@
         <h1>user.firstName + " " + user.lastName</h1>
         <img src="<% user.avatar %>" alt="user profile image"> 
     </div>
-    <div class="col-md-8"></div>
+    <div class="col-md-8">
+        <h3><%= user.username %>'s campgrounds:</h3>
+        <ul>
+            <% campground.forEach(function(campground){ %>  
+                <li><a href="/campgrounds/<%= campground.id %>"<%= campground.name %></a></li>
+            <% }); %>
+        </ul>
+    </div>
+   
 </div>
 
 
