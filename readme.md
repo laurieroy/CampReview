@@ -1,6 +1,6 @@
-#YelpCamp
+#CampReview
 A review site for campgrounds using RESTful routing created in node.js
-code-along: Colt Steele webdevbootcamp
+code-along: Colt Steele webdevbootcamp (YelpCamp)
 
 ##Initial Setup
 * Landing Page

@@ -4,15 +4,30 @@ var Campground  = require("../models/campground"),
     router      = express.Router({mergeParams: true}); //test removing hte mergeparams
 
 
-//INDEX
+//INDEX - show all campgroun
 router.get("/", function (req, res) {
-    Campground.find({}, function(err, campgrounds){
-        if(err){
-            console.log(err);
-        } else {
-            res.render("campgrounds/index", {campgrounds: campgrounds, page: 'campgrounds'});
-        }
-    });
+    var noMatch = null;
+    if(req.query.search){
+        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+        Campground.find({name: regex}, function(err, campgrounds){
+            if(err){
+                console.log(err);
+            } else {
+                if(campgrounds.length < 1){
+                    noMatch = "No campgrounds match that query, please try again!";
+                } 
+                res.render("campgrounds/index", {campgrounds: campgrounds, page: 'campgrounds', noMatch: noMatch});
+            }
+        });
+    } else {
+        Campground.find({}, function(err, campgrounds){
+            if(err){
+                console.log(err);
+            } else {
+                res.render("campgrounds/index", {campgrounds: campgrounds, page: 'campgrounds', noMatch: noMatch});
+            }        
+        });
+    }
 });
 //  CREATE
 router.post("/", middleware.isLoggedIn, function(req, res){
@@ -83,5 +98,9 @@ router.delete("/:id", middleware.checkCampgroundOwnership, function(req, res){
         }
     });
 });
+
+function escapeRegex(text){
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+}
 
 module.exports = router;
