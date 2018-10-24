@@ -31,7 +31,7 @@ app.locals.moment = require("moment");
 
 //PASSPORT CONFIGURATION
 app.use(require("express-session")({
-    secret:"This might be my last week of pay with NOAA!",
+    secret:"Once again Pepper wins cutest dog!",
     resave: false,
     saveUnitialized: false
 }));
