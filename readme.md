@@ -1,19 +1,19 @@
-#CampReview
+# CampReview
 A review site for campgrounds using RESTful routing created in node.js
 code-along: Colt Steele webdevbootcamp (YelpCamp)
 NOTE: This is still a work in progress. I'm just putting it up for now to show what I've been up to.
 
-##Initial Setup
+## Initial Setup
 * Landing Page
 * Campgrounds page that lists all campgrounds
     -initially added as an array, will add in db later
     Each Campground has: --Name  --Image
     
-#Layout and Basic Styling
+# Layout and Basic Styling
 * Created header and footer partials
 * Using BS3 - will migrate to 4 at end
 
-#Create a New Campground
+# Create a New Campground
 * Setup new campground POST route
 * Basic unstyled form
 * Setup route to show form
@@ -24,11 +24,11 @@ NOTE: This is still a work in progress. I'm just putting it up for now to show w
 * Make campground display in a grid
 * Add a navbar to templates
 * Style the New Campground Form
-* 
+
 # Add MongooseDB
 * Setup campground model
 * Use model in routes
-##Refactor Mongoose Code
+## Refactor Mongoose Code
  * Models dir / module.exports
 ## Add Seeds File to run every timer server starts
 
@@ -37,7 +37,7 @@ NOTE: This is still a work in progress. I'm just putting it up for now to show w
 * CRUD routes and buttons
 # Add authorization
 
-# Add User model nvm
+# Add User model
 * Authentication - using passport
 * Registration template and routes
 * Login template and routes
@@ -55,7 +55,7 @@ NOTE: This is still a work in progress. I'm just putting it up for now to show w
 # Add fuzzy search feature
 * Currently only for campground name
 
-#Update to Bootstrap4
+# Update to Bootstrap4
 * Change thumbnails to cards
 * Change wells to cards
 * Change glyphicon to font awesome
