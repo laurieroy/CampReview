@@ -5,50 +5,83 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">  
-        <title>YelpCamp</title>
+        <title>CampReview</title>
 
-        <!-- BS3 first - Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- BS4.1.3 first -  compiled and minified CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">  
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
     </head>
     <body>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-              <!-- collapse button isn't in their version -->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-            
-                <a class="navbar-brand" href="/">YelpCamp</a>
-            </div>
-            <div id="navbar" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="<%= typeof page !== 'undefined' && page === 'campgrounds' ? 'active' : '' %>"><a href="/campgrounds">Home</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <form action="/campgrounds" method="GET" class="form-inline">
-                            <div class="form-group">
-                                <input class="form-control" type="text" name="search" placeholder="Search campground by name...">
-                                <input type="submit" value="Search" class="btn btn-default">
-                            </div>
-                        </form>
-                    </li>
-                    <% if(!currentUser){ %>
-                        <li class="<%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"><a href="/login">Login</a></li>
-                        <li class="<%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>"><a href="/register">Sign Up</a></li>
-                    <% } else { %>
-                        <li><a href="#">Signed In As <%= currentUser.username %></a></li>
-                        <li><a href="/logout">Logout</a></li>
-                    <% } %>
-                </ul>
-            </div>
-        </div>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+        <a class="navbar-brand" href="/">CampReview</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="nav navbar-nav mr-auto">
+            <li class="nav-item active <%= typeof page !== 'undefined' && page === 'campgrounds' ? 'active' : '' %>">
+                <a class="nav-link" href="/campgrounds">Home<span class="sr-only">(current)</span></a>
+            </li>
+            <!--<li class="nav-item">-->
+            <!--    <a class="nav-link" href="#">Link</a>-->
+            <!--</li>    -->
+        </ul>
+        
+        <form action="/campgrounds" method="GET" class="form-inline mt-2 mt-md-0">
+          <input class="form-control mr-sm-2" name="search" type="text" placeholder="Search campground by name..." aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <% if(!currentUser){ %>
+            <li class="<%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"><a href="/login">Login</a></li>
+            <li class="<%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>"><a href="/register">Sign Up</a></li>
+        <% } else { %>
+            <li><a href="#">Signed In As <%= currentUser.username %></a></li>
+            <li><a href="/logout">Logout</a></li>
+        <% } %>
+      </div>
+      
+      
     </nav>
+        <!--cold navbar -->
+    <!--<nav class="navbar navbar-default">-->
+    <!--    <div class="container-fluid">-->
+    <!--        <div class="navbar-header">-->
+              <!-- collapse button isn't in their version -->
+    <!--            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">-->
+    <!--              <span class="sr-only">Toggle navigation</span>-->
+    <!--              <span class="icon-bar"></span>-->
+    <!--              <span class="icon-bar"></span>-->
+    <!--              <span class="icon-bar"></span>-->
+    <!--            </button>-->
+            
+    <!--            <a class="navbar-brand" href="/">CampReview</a>-->
+    <!--        </div>-->
+    <!--        <div id="navbar" class="collapse navbar-collapse">-->
+    <!--            <ul class="nav navbar-nav">-->
+    <!--                <li class="<%= typeof page !== 'undefined' && page === 'campgrounds' ? 'active' : '' %>"><a href="/campgrounds">Home</a></li>-->
+    <!--            </ul>-->
+    <!--            <ul class="nav navbar-nav navbar-right">-->
+    <!--                <li>-->
+    <!--                    <form action="/campgrounds" method="GET" class="form-inline">-->
+    <!--                        <div class="form-group">-->
+    <!--                            <input class="form-control" type="text" name="search" placeholder="Search campground by name...">-->
+    <!--                            <input type="submit" value="Search" class="btn btn-default">-->
+    <!--                        </div>-->
+    <!--                    </form>-->
+    <!--                </li>-->
+    <!--                <% if(!currentUser){ %>-->
+    <!--                    <li class="<%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"><a href="/login">Login</a></li>-->
+    <!--                    <li class="<%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>"><a href="/register">Sign Up</a></li>-->
+    <!--                <% } else { %>-->
+    <!--                    <li><a href="#">Signed In As <%= currentUser.username %></a></li>-->
+    <!--                    <li><a href="/logout">Logout</a></li>-->
+    <!--                <% } %>-->
+    <!--            </ul>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--</nav>-->
         
         <div class="container">
              <% if(success && success.length > 0) {  %>

@@ -1,8 +1,8 @@
 <% include ./partials/header %>
-<div class="row text-center">
-    <h1 >Login</h1>
-        <div>
-            <form action="/login" method="POST">
+    <div class="row text-center">
+        <div class="col-md-12">
+            <form class="form-signin" action="/login" method="POST">
+                <h1 class="h3 mb-3" > Please Login:</h1>
                 <div class="form-group text-left">
                     <label for="username">Username:</label>
                     <input class="form-control" type="text" name="username" placeholder="username">
@@ -15,12 +15,7 @@
                     <button class="btn btn-lg btn-primary btn-block">Log In!</button>
                 </div>
             </form>
-        <a href="/campgrounds">Go Back</a>
         </div>
-</div>
-    
-    
-
-
-
+         <a href="/campgrounds">Go Back</a>
+    </div>
 <% include ./partials/footer %>

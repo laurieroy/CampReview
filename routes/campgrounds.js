@@ -4,7 +4,7 @@ var Campground  = require("../models/campground"),
     router      = express.Router({mergeParams: true}); //test removing hte mergeparams
 
 
-//INDEX - show all campgroun
+//INDEX - show all campgrounds
 router.get("/", function (req, res) {
     var noMatch = null;
     if(req.query.search){
@@ -99,8 +99,9 @@ router.delete("/:id", middleware.checkCampgroundOwnership, function(req, res){
     });
 });
 
+// for search feature
 function escapeRegex(text){
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
-}
+};
 
 module.exports = router;
