@@ -60,7 +60,7 @@ NOTE: This is still a work in progress. I'm just putting it up for now to show w
 * Change wells to cards
 * Change glyphicon to font awesome
 * Still working a few bugs
-* 
+
 # Change password by email
 * token good for an hour
 * Update to node 6
